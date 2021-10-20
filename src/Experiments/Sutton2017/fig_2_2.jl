@@ -1,9 +1,9 @@
 # To recreate Fig 2.2
-type fig_2_2 <: BanditExpBase
+struct fig_2_2 <: BanditExpBase
 
     # List of new algorithms to compare - in case you don't know the number of arms
     #   and later create in run() create the actual objects
-    # >> agents::Vector{Tuple{DataType,Any}}
+    # >> agents::Vector{Tuple{Datastruct,Any}}
     # But here we know the number of arms = 10; so we can create them 
     # in constructor;
     
@@ -11,7 +11,7 @@ type fig_2_2 <: BanditExpBase
     
     default_agents::Vector{BanditAlgorithmBase}
     
-    # function fig_2_2(; agents::Vector{Tuple{DataType,Any}} = nothing )
+    # function fig_2_2(; agents::Vector{Tuple{Datastruct,Any}} = nothing )
     function fig_2_2(;agents::Vector{} = Vector{}() )
         K = 10
         _agents = make_agents_with_k( K, agents )
@@ -85,7 +85,7 @@ function run_env( agents::Vector{BanditAlgorithmBase},
                 reward      = Arms.pull!( bandit[armToPull] )
                 update_reward!( alg, reward )
                 r[_n] += reward
-                a[_n] += (armToPull==optimal_arm)?1:0
+                a[_n] += (armToPull==optimal_arm) ? 1 : 0
                 # Process tick() for all arms except the pulled arm
                 for arm in bandit
                     if arm == bandit[armToPull]

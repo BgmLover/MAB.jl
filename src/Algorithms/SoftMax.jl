@@ -3,7 +3,7 @@
 """
     SoftMax Arm Selection
 """
-type SoftMax <: BanditAlgorithmBase
+struct SoftMax <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64

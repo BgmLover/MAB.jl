@@ -1,8 +1,8 @@
-"""
-    An Uniform playing strategy for Bandits: Can be used as benchmark
-"""
+# """
+#     An Uniform playing strategy for Bandits: Can be used as benchmark
+# """
 
-type UniformStrategy <: BanditAlgorithmBase
+struct  UniformStrategy <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64

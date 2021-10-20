@@ -2,7 +2,7 @@
     Implements KLMANB
 """
 
-type KLMANB <: BanditAlgorithmBase
+struct KLMANB <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64

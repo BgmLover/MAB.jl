@@ -1,6 +1,6 @@
 # Exponential Arm Model
 
-type Exponential <: BanditArmBase
+struct Exponential <: BanditArmBase
     armDist::Distributions.Exponential
 
     function Exponential( λ::Real ) # λ is the mean parameter

@@ -3,7 +3,7 @@
     Based on: Figure-1, Auer, P., Bianchi, N. C., & Fischer, P. (2002). Finite time analysis of the multiarmed bandit problem. Machine Learning, 47, 235–256.
 """
 
-type UCB1 <: BanditAlgorithmBase
+struct   UCB1 <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -111,7 +111,7 @@ end
     Based on: Figure-4, Auer, P., Bianchi, N. C., & Fischer, P. (2002). Finite time analysis of the multiarmed bandit problem. Machine Learning, 47, 235–256.
 """
 
-type UCBNormal <: BanditAlgorithmBase
+struct  UCBNormal <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -183,7 +183,7 @@ end
     Based on: Moulines, E., & Paristech, T. (2008). On Upper-Confidence Bound Policies for Non-Stationary Bandit Problems. arXiv Preprint, (2008), 1–24.
 """
 
-type DUCB <: BanditAlgorithmBase
+struct DUCB <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -267,7 +267,7 @@ end
     Based on: Moulines, E., & Paristech, T. (2008). On Upper-Confidence Bound Policies for Non-Stationary Bandit Problems. arXiv Preprint, (2008), 1–24.
 """
 
-type SWUCB <: BanditAlgorithmBase
+struct SWUCB <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -365,7 +365,7 @@ end
     Based on: Audibert, J. Y., Munos, R., & Szepesvári, C. (2009). Exploration-exploitation tradeoff using variance estimates in multi-armed bandits. Theoretical Computer Science, 410(19), 1876–1902. http://doi.org/10.1016/j.tcs.2009.01.016
 """
 
-type UCBV <: BanditAlgorithmBase
+struct UCBV <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -460,7 +460,7 @@ end
     Based on: Kaufmann, E., Cappé, O., & Garivier, A. (2012). On Bayesian upper confidence bounds for bandit problems. International Conference on Artificial Intelligence and Statistics, 592–600.
     Using 1 - 1/t as quantile
 """
-type BayesUCB <: BanditAlgorithmBase
+struct BayesUCB <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -513,8 +513,8 @@ end
 
 function update_reward!( agent::BayesUCB, r::Int64 )
     # Update S and F
-    agent.cummSuccess[agent.lastPlayedArm] += (r==0?0:1)
-    agent.cummFailure[agent.lastPlayedArm] += (r==0?1:0)
+    agent.cummSuccess[agent.lastPlayedArm] += r == 0 ? 0 : 1
+    agent.cummFailure[agent.lastPlayedArm] += r == 1 ? 1 : 0
 
     # Update Distributions
     agent.samplingDist[agent.lastPlayedArm] = Distributions.Beta(
@@ -551,7 +551,7 @@ end
     KL-UCB Implementation
     Based on: Garivier, A., & Cappe, O. (2011). The KL-UCB Algorithm for Bounded Stochastic Bandits and Beyond. In CoLT (Vol. 24).
 """
-type KLUCB <: BanditAlgorithmBase
+struct KLUCB <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -655,7 +655,7 @@ end
     Based on: Cao, Y., Zheng, W., Kveton, B., & Xie, Y. (2018). Nearly Optimal Adaptive Procedure for Piecewise-Stationary Bandit: a Change-Point Detection Approach. Retrieved from http://arxiv.org/abs/1802.03692
 """
 
-type MUCB <: BanditAlgorithmBase
+struct MUCB <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64

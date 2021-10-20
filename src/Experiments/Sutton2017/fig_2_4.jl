@@ -1,6 +1,6 @@
 # Code for Figure 2.4
 
-type fig_2_4 <: BanditExpBase
+struct fig_2_4 <: BanditExpBase
     # Reuse the test bed from Fig2.2
     _exp::fig_2_2
     

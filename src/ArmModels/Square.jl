@@ -1,6 +1,6 @@
 # Square Wave Arm model
 
-type Square <: BanditArmBase
+struct Square <: BanditArmBase
     step::Int64                         # For internal tracking
     period::Int64                       # Period at which wave repeats
     changePoints::Dict{Int64,Float64}   # Dictionary of change points

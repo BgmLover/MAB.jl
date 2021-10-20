@@ -6,7 +6,7 @@ using PyPlot
 import MAB.Algorithms: BanditAlgorithmBase, get_arm_index, update_reward!, reset!, info_str
 
 # ------------------------------------------------------------------------------
-type MyAwesomeAlgorithm <: BanditAlgorithmBase
+struct MyAwesomeAlgorithm <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64

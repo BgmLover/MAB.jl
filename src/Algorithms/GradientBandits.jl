@@ -4,7 +4,7 @@
 
     Based on: Sec 2.8, R. S. Sutton, A. G. Barto, and A. B. Book, Reinforcement Learning : An Introduction, Second Edi. The MIt Press, 2017.
 """
-type GradientBandit <: BanditAlgorithmBase
+struct GradientBandit <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64

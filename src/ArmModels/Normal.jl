@@ -1,6 +1,6 @@
 # Normal Arm Model
 
-type Normal <: BanditArmBase
+struct Normal <: BanditArmBase
     armDist::Distributions.Normal
 
     function Normal( μ::Real, σ::Real )

@@ -1,4 +1,5 @@
 # Base for implementing all algorithms
+using Printf
 """
     BanditAlgorithmBase
 
@@ -76,7 +77,7 @@ Returns a vector of agents specified in `agent_list` with `K` arms.
 function make_agents_with_k( K::Int64, agent_list::Vector{} )
     agents = Vector{BanditAlgorithmBase}()
     for (agent,params) ∈ agent_list
-        if params != nothing
+        if !isnothing(params)
             push!( agents, agent(K,params...) )
         else
             push!( agents, agent(K) )

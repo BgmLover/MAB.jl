@@ -2,7 +2,7 @@
     Implements Thompson Sampling for Bandits with r ∈ [ 0,1]
 """
 
-type TS <: BanditAlgorithmBase
+struct TS <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -48,8 +48,8 @@ end
 
 function update_reward!( agent::TS, r::Int64 )
     # Update S and F
-    agent.cummSuccess[agent.lastPlayedArm] += (r==0?0:1)
-    agent.cummFailure[agent.lastPlayedArm] += (r==0?1:0)
+    agent.cummSuccess[agent.lastPlayedArm] += (r==0 ? 0 : 1)
+    agent.cummFailure[agent.lastPlayedArm] += (r==0 ? 1 : 0)
 
     # Update Distributions
     agent.samplingDist[agent.lastPlayedArm] = Distributions.Beta(
@@ -91,7 +91,7 @@ end
     Based on: Gupta, N., Granmo, O. C., & Agrawala, A. (2011). Thompson sampling for dynamic multi-armed bandits. Proceedings - 10th International Conference on Machine Learning and Applications, ICMLA 2011, 1, 484–489. http://doi.org/10.1109/ICMLA.2011.144
 """
 
-type DynamicTS <: BanditAlgorithmBase
+struct DynamicTS <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -122,11 +122,11 @@ end
 function update_reward!( agent::DynamicTS, r::Integer )
     # Update reward to arm played
     if agent.α[agent.lastPlayedArm]+agent.β[agent.lastPlayedArm] < agent.C
-        agent.α[agent.lastPlayedArm]    += (r==0?0:1)
-        agent.β[agent.lastPlayedArm]    += (r==0?1:0)
+        agent.α[agent.lastPlayedArm]    += (r==0 ? 0 : 1)
+        agent.β[agent.lastPlayedArm]    += (r==0 ? 1 : 0)
     else
-        agent.α[agent.lastPlayedArm]    = (agent.α[agent.lastPlayedArm]+(r==0?0:1)) * agent.C/(agent.C+1)
-        agent.β[agent.lastPlayedArm]    = (agent.β[agent.lastPlayedArm]+(r==0?1:0)) * agent.C/(agent.C+1)
+        agent.α[agent.lastPlayedArm]    = (agent.α[agent.lastPlayedArm]+(r==0 ? 0 : 1)) * agent.C/(agent.C+1)
+        agent.β[agent.lastPlayedArm]    = (agent.β[agent.lastPlayedArm]+(r==0 ? 1 : 0)) * agent.C/(agent.C+1)
     end
 
     # Update arm's distribution
@@ -171,7 +171,7 @@ end
     Based on: May, B. C., Korda, N., Lee, A., & Leslie, D. S. (2012). Optimistic bayesian sampling in contextual-bandit problems. Journal of Machine Learning Research, 13, 2069–2106.
 """
 
-type OTS <: BanditAlgorithmBase
+struct OTS <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -217,8 +217,8 @@ end
 
 function update_reward!( agent::OTS, r::Int64 )
     # Update S and F
-    agent.cummSuccess[agent.lastPlayedArm] += (r==1?1:0)
-    agent.cummFailure[agent.lastPlayedArm] += (r==0?1:0)
+    agent.cummSuccess[agent.lastPlayedArm] += (r == 1 ? 1 : 0)
+    agent.cummFailure[agent.lastPlayedArm] += (r == 0 ? 1 : 0)
 
     # Update Distributions
     agent.samplingDist[agent.lastPlayedArm] = Distributions.Beta(
@@ -259,7 +259,7 @@ end
     Based on: Sec 6.3, Russo, D., & Van Roy, B. (2014). Learning to Optimize Via Posterior Sampling. Mathematics of Operations Research. http://doi.org/10.1287/xxxx.0000.0000
 """
 
-type TSNormal <: BanditAlgorithmBase
+struct TSNormal <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -343,7 +343,7 @@ end
     Based on: Vishnu Raj, Sheetal Kalyani (2017). Taming Non-stationary Bandits: A Bayesian Approach. https://arxiv.org/abs/1707.09727
 """
 
-type dTS <: BanditAlgorithmBase
+struct dTS <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -394,8 +394,8 @@ function update_reward!( agent::dTS, r::Int64 )
     # Update S and F
     agent.cummSuccess *= agent.γ
     agent.cummFailure *= agent.γ
-    agent.cummSuccess[agent.lastPlayedArm] += (r==0?0:1)
-    agent.cummFailure[agent.lastPlayedArm] += (r==0?1:0)
+    agent.cummSuccess[agent.lastPlayedArm] += (r==0 ? 0 : 1)
+    agent.cummFailure[agent.lastPlayedArm] += (r==0 ? 1 : 0)
 
     # Update Distributions
     agent.samplingDist  = Distributions.Beta.(
@@ -434,7 +434,7 @@ end
     Discounted Optimistic Thompson Sampling
     Based on: Vishnu Raj, Sheetal Kalyani (2017). Taming Non-stationary Bandits: A Bayesian Approach. https://arxiv.org/abs/1707.09727
 """
-type dOTS <: BanditAlgorithmBase
+struct dOTS <: BanditAlgorithmBase
     _dTS::dTS
 
     function dOTS( noOfArms, γ::Float64 = 1.00,
@@ -480,7 +480,7 @@ end
     Based on:
 """
 
-type RestartTS <: BanditAlgorithmBase
+struct RestartTS <: BanditAlgorithmBase
     _TS::TS
     Δ::Int64
 
@@ -526,7 +526,7 @@ end
     Thompson Sampling with Gaussian Priors
     Based on: Algorithm 2, S. Agrawal and N. Goyal, “Near-Optimal Regret Bounds for Thompson Sampling,” J. ACM, vol. 64, no. 5, 2017.
 """
-type TSGaussPrior <: BanditAlgorithmBase
+struct TSGaussPrior <: BanditAlgorithmBase
     noOfArms::Integer
     noOfSteps::Integer
     lastPlayedArm::Integer

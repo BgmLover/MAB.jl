@@ -1,6 +1,6 @@
 # Beta Distributed Arm
 
-type Beta <: BanditArmBase
+struct Beta <: BanditArmBase
     armDist::Distributions.Beta
 
     function Beta( α::Real, β::Real )

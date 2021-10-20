@@ -1,15 +1,22 @@
 # Experiment compare mulitple algorithms
-
-type Compare <: BanditExpBase
-    bandit::Vector{Arms.BanditArmBase}
-    algorithms::Vector{BanditAlgorithmBase}
-
-    function Compare{T1<:Arms.BanditArmBase,T2<:BanditAlgorithmBase}(
-        _bandit::Vector{T1},
-        _algo::Vector{T2}
-        )
-        new( _bandit, _algo )
+struct Tuple2{A,B}
+    a::A
+    b::B
+    function Tuple2{Int,Int}(a,b)
+        new(a,b)
     end
+end
+
+struct Compare{T1,T2 } <: BanditExpBase
+    bandit::Vector{T1}
+    algorithms::Vector{T2}
+
+    # function Compare{T1<:Arms.BanditArmBase,T2<:BanditAlgorithmBase}(
+    #     _bandit::Vector{T1},
+    #     _algo::Vector{T2}
+    #     )
+    #     new{typeof(_bandit), typeof(_algo)}( _bandit, _algo )
+    # end
 end
 
 function run( experiment::Compare, noOfTimeSteps::Integer, noOfRounds::Integer )

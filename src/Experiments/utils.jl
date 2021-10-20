@@ -4,7 +4,7 @@
 import Base: run
 using Requires
 @require Plots using Plots
-using ..BanditExpBase
+include("BanditExpBase.jl")
 using ...Algorithms
 using ...Arms
 using ...Algorithms: make_agents_with_k

@@ -1,7 +1,7 @@
 # Arm with Variation V_t as mentioned in
 #       Besbes, O., Gur, Y., & Zeevi, A. (2014). Optimal Exploration-Exploitation in a Multi-Armed-Bandit Problem with Non-stationary Rewards, 1–20.
 
-type Variational <: BanditArmBase
+struct Variational <: BanditArmBase
     step::Int64         # Time step
     variation::Float64  # Variation of the arms
     period::Float64     # Period of the sinusoidal wave

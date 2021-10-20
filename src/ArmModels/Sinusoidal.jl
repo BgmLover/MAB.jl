@@ -1,6 +1,6 @@
 # Sinusoidal Arm - Restless
 
-type Sinusoidal <: BanditArmBase
+struct Sinusoidal <: BanditArmBase
     step::Int64         # Time step
     period::Int64       # Period of the sinusoidal wave
     isRestless::Bool    # Is this arm restless - True by default

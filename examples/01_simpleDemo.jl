@@ -1,5 +1,5 @@
 # This examples show how to run a simple test
-
+include("../src/MAB.jl")
 using MAB
 import PyPlot
 

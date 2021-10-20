@@ -2,7 +2,7 @@
     EXP3 Implementation
 """
 
-type EXP3 <: BanditAlgorithmBase
+struct EXP3 <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -66,7 +66,7 @@ end
     Based on : Fig.2 in Auer, P., Bianchi, N. C., Freund, Y., & E.Schapire, R. (2002). The Non-Stochastic Multi-Armed bandit problem. SIAM Journal of Computing, 22, 322–331. http://doi.org/10.1109/CDC.1983.269708
 """
 
-type EXP31 <: BanditAlgorithmBase
+struct EXP31 <: BanditAlgorithmBase
     G_hat::Vector
     r::Int64
     g_r::Float64
@@ -127,7 +127,7 @@ end
     Based on Besbes, O., Gur, Y., & Zeevi, A. (2014). Stochastic Multi-Armed-Bandit Problem with Non-stationary Rewards. Advances in Neural Information Processing Systems, 2, 1–9.
 """
 
-type REXP3 <: BanditAlgorithmBase
+struct REXP3 <: BanditAlgorithmBase
     noOfSteps::Int64    # Timesteps passed
     j::Int64            # Batch index
     Δ::Int64            # Batch size
@@ -180,7 +180,7 @@ end
     Based on Neu, G. (2015). Explore no more: improved high-probability regret bounds for non-stochastic bandits. In Advances in Neural Information Processing Systems (pp. 1–9).
 """
 
-type EXP3IX <: BanditAlgorithmBase
+struct EXP3IX <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64

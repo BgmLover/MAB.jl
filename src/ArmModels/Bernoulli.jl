@@ -1,6 +1,6 @@
 # Bernoulli Arm Model
 
-type Bernoulli <: BanditArmBase
+struct Bernoulli <: BanditArmBase
     armDist::Distributions.Bernoulli
 
     function Bernoulli( p::Real )
