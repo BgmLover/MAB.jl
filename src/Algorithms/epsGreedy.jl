@@ -73,7 +73,7 @@ end
     Based on Auer, P., Bianchi, N. C., & Fischer, P. (2002). Finite time analysis of the multiarmed bandit problem. Machine Learning, 47, 235–256.
 """
 
-struct epsNGreedy <: BanditAlgorithmBase
+mutable struct epsNGreedy <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64

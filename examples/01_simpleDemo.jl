@@ -1,7 +1,6 @@
 # This examples show how to run a simple test
 # using MAB
-include("../src/MAB.jl")
-using .MAB
+using MAB
 using Statistics
 import PyPlot
 ENV["MPLBACKEND"]="tkagg"
