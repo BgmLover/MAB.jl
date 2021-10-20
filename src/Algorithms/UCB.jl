@@ -3,7 +3,7 @@
     Based on: Figure-1, Auer, P., Bianchi, N. C., & Fischer, P. (2002). Finite time analysis of the multiarmed bandit problem. Machine Learning, 47, 235–256.
 """
 
-struct   UCB1 <: BanditAlgorithmBase
+mutable struct   UCB1 <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -28,7 +28,7 @@ end
 
 function get_arm_index( agent::UCB1 )
     if any(agent.count.==0)
-        agent.lastPlayedArm =  rand( find(agent.count.==0) )
+        agent.lastPlayedArm =  rand( findall(agent.count.==0) )
     else
         agent.lastPlayedArm = findmax(agent.ucbIndices)[2]
     end

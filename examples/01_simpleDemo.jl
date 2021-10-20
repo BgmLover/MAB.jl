@@ -1,5 +1,7 @@
 # This examples show how to run a simple test
-using MAB
+# using MAB
+include("../src/MAB.jl")
+using .MAB
 using Statistics
 import PyPlot
 
@@ -45,7 +47,7 @@ for _alg ∈ algorithms
             # print( observations )
         end
     end
-    avgReward = mean( observations, 2 );
+    avgReward = mean( observations, dims=2  );
     PyPlot.plot( 1:noOfTimeSteps, avgReward, label = Algorithms.info_str(_alg) )
 end
 
@@ -55,3 +57,4 @@ PyPlot.title( "Comparison Plot (Averaged over $noOfRounds runs)" )
 ax = PyPlot.gca()
 ax[:set_ylim]( [0.00, 1.00] )
 PyPlot.legend()
+PyPlot.show()

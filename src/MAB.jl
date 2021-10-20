@@ -11,7 +11,6 @@ This package is divied into three main modules
 - [Experiments](@ref)
 """
 MAB
-
 """
 MAB.Algorithms module provides implementations of various multi-arm bandit algorithm and an
 unified API to access those algorithms.
