@@ -76,7 +76,7 @@ module Experiments
     using Requires
     # import Base: run
     # using Plots
-    @require Plots using Plots
+    @require Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80" using Plots
     # info( "Some functionalities of MAB.Experiments will not be available until you load Plots.jl",
     #         prefix = "MAB: " )
     using ..Algorithms

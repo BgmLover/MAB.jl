@@ -4,7 +4,7 @@ include("../src/MAB.jl")
 using .MAB
 using Statistics
 import PyPlot
-
+ENV["MPLBACKEND"]="tkagg"
 # Create 5 Bernoulli arms
 armRewards = [ 0.15, 0.20, 0.22, 0.65, 0.12 ]
 arms = []

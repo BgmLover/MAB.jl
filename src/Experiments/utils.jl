@@ -3,7 +3,7 @@
 
 import Base: run
 using Requires
-@require Plots using Plots
+@require Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80" using Plots
 include("BanditExpBase.jl")
 using ...Algorithms
 using ...Arms
