@@ -2,7 +2,7 @@
 
 using MAB
 using PyPlot
-
+using Printf
 import MAB.Algorithms: BanditAlgorithmBase, get_arm_index, update_reward!, reset!, info_str
 
 # ------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ result = Experiments.run( exp1, noOfTimeSteps, noOfRounds )
 fig = PyPlot.figure()
 ## Plot avg rewards
 for alg in keys(result)
-    PyPlot.plot( 1:noOfTimeSteps, cumsum(result[alg])./collect(1:noOfTimeSteps), label = alg )
+    PyPlot.plot( 1:noOfTimeSteps, cumsum(result[alg], dims = 1)./collect(1:noOfTimeSteps), label = alg )
 end
 
 PyPlot.xlabel( "Timesteps" )
@@ -60,3 +60,4 @@ PyPlot.title( "Average Reward (Normalized for $noOfRounds rounds)")
 # ax[:set_ylim]( [0.00,1.00] )
 PyPlot.legend()
 PyPlot.grid()
+PyPlot.show()

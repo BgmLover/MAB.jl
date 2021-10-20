@@ -1,4 +1,6 @@
 # To recreate Fig 2.2
+using Random
+using Plots
 struct fig_2_2 <: BanditExpBase
 
     # List of new algorithms to compare - in case you don't know the number of arms
@@ -70,7 +72,7 @@ function run_env( agents::Vector{BanditAlgorithmBase},
     result["Optimal Actions"]   = Dict{String,Vector{Float64}}()
 
     for alg ∈ agents
-        srand( seed );  # Seed initialization for RNG - across all algorithms
+        Random.seed!( seed );  # Seed initialization for RNG - across all algorithms
         r = zeros( T )
         a = zeros( T )
 

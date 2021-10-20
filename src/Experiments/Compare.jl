@@ -1,4 +1,5 @@
 # Experiment compare mulitple algorithms
+using Random
 struct Tuple2{A,B}
     a::A
     b::B
@@ -23,7 +24,7 @@ function run( experiment::Compare, noOfTimeSteps::Integer, noOfRounds::Integer )
 
     result = Dict{String,Array{Float64,2}}()
     for alg ∈ experiment.algorithms
-        srand( 1729 );  # "Magic" Seed initialization for RNG - across all algorithms
+        Random.seed!( 1729 );  # "Magic" Seed initialization for RNG - across all algorithms
         observations = zeros( noOfTimeSteps, noOfRounds )
         for _round = 1:noOfRounds
             reset!( alg )
@@ -46,7 +47,7 @@ function run( experiment::Compare, noOfTimeSteps::Integer, noOfRounds::Integer )
                 end
             end
         end
-        avgReward = mean( observations, 2 )
+        avgReward = mean( observations, dims = 2 )
         result[info_str(alg,true)] = avgReward
     end
     return result

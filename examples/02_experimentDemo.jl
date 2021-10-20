@@ -87,13 +87,12 @@ testAlgs = [
 exp1 = Experiments.Compare( bandit, testAlgs )
 # run
 noOfRounds      = 1000
-noOfTimeSteps   = 1000
+noOfTimeSteps   = 2000
 result = Experiments.run( exp1, noOfTimeSteps, noOfRounds )
-
 fig = PyPlot.figure()
 ## Plot avg rewards
 for alg in keys(result)
-    PyPlot.plot( 1:noOfTimeSteps, cumsum(result[alg])./collect(1:noOfTimeSteps), label = alg )
+    PyPlot.plot( 1:noOfTimeSteps, cumsum(result[alg], dims=1)./collect(1:noOfTimeSteps), label = alg )
 end
 
 PyPlot.xlabel( "Timesteps" )
@@ -103,3 +102,4 @@ PyPlot.title( "Average Reward (Normalized for $noOfRounds rounds)")
 # ax[:set_ylim]( [0.00,1.00] )
 PyPlot.legend()
 PyPlot.grid()
+PyPlot.show()
