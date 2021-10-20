@@ -2,7 +2,7 @@
     Implements Thompson Sampling for Bandits with r ∈ [ 0,1]
 """
 
-struct TS <: BanditAlgorithmBase
+mutable struct TS <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -91,7 +91,7 @@ end
     Based on: Gupta, N., Granmo, O. C., & Agrawala, A. (2011). Thompson sampling for dynamic multi-armed bandits. Proceedings - 10th International Conference on Machine Learning and Applications, ICMLA 2011, 1, 484–489. http://doi.org/10.1109/ICMLA.2011.144
 """
 
-struct DynamicTS <: BanditAlgorithmBase
+mutable struct DynamicTS <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -171,7 +171,7 @@ end
     Based on: May, B. C., Korda, N., Lee, A., & Leslie, D. S. (2012). Optimistic bayesian sampling in contextual-bandit problems. Journal of Machine Learning Research, 13, 2069–2106.
 """
 
-struct OTS <: BanditAlgorithmBase
+mutable struct OTS <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -259,7 +259,7 @@ end
     Based on: Sec 6.3, Russo, D., & Van Roy, B. (2014). Learning to Optimize Via Posterior Sampling. Mathematics of Operations Research. http://doi.org/10.1287/xxxx.0000.0000
 """
 
-struct TSNormal <: BanditAlgorithmBase
+mutable struct TSNormal <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -343,7 +343,7 @@ end
     Based on: Vishnu Raj, Sheetal Kalyani (2017). Taming Non-stationary Bandits: A Bayesian Approach. https://arxiv.org/abs/1707.09727
 """
 
-struct dTS <: BanditAlgorithmBase
+mutable struct dTS <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
@@ -480,7 +480,7 @@ end
     Based on:
 """
 
-struct RestartTS <: BanditAlgorithmBase
+mutable struct RestartTS <: BanditAlgorithmBase
     _TS::TS
     Δ::Int64
 
@@ -526,7 +526,7 @@ end
     Thompson Sampling with Gaussian Priors
     Based on: Algorithm 2, S. Agrawal and N. Goyal, “Near-Optimal Regret Bounds for Thompson Sampling,” J. ACM, vol. 64, no. 5, 2017.
 """
-struct TSGaussPrior <: BanditAlgorithmBase
+mutable struct TSGaussPrior <: BanditAlgorithmBase
     noOfArms::Integer
     noOfSteps::Integer
     lastPlayedArm::Integer
