@@ -1,5 +1,6 @@
 # This examples show how to run a simple test
 using MAB
+using Statistics
 import PyPlot
 
 # Create 5 Bernoulli arms
