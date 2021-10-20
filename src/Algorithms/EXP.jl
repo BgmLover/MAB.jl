@@ -2,7 +2,7 @@
     EXP3 Implementation
 """
 
-struct EXP3 <: BanditAlgorithmBase
+mutable struct EXP3 <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64

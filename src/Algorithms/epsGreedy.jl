@@ -2,7 +2,7 @@
     ϵ-Greedy Implementation
 """
 
-struct epsGreedy <: BanditAlgorithmBase
+mutable struct epsGreedy <: BanditAlgorithmBase
     noOfArms::Int64
     noOfSteps::Int64
     lastPlayedArm::Int64
