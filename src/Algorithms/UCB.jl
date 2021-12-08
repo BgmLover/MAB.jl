@@ -65,6 +65,16 @@ function reset!( agent::UCB1 )
     nothing
 end
 
+function add_arms!( agent::UCB1, noOfArms::Int )
+    agent.noOfArms += noOfArms
+
+    agent.cummReward    = append( agent.cummReward, zeros( Float64, noOfArms ) )
+    agent.count         = append( agent.count, zeros( Int64, noOfArms ) )
+    agent.ucbIndices    = append( agent.ucbIndices, zeros( Float64, noOfArms ) )
+
+    nothing
+end
+
 function info_str( agent::UCB1, latex::Bool )
     if agent.c == √2
         return @sprintf( "UCB1" )
@@ -72,6 +82,8 @@ function info_str( agent::UCB1, latex::Bool )
         return @sprintf( "UCB1 (c=%3.2f)", agent.c )
     end
 end
+
+
 
 # """
 #     UCB2 Implementation
