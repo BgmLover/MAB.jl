@@ -19,6 +19,11 @@ Gets the index of next arm to pull.
 
 ```
 """
+
+function add_arms!( agent::BanditAlgorithmBase, arms::Array{Int64} )
+    error( "No implementation of add_arms() for ", typeof(agent) );
+end
+
 function get_arm_index( agent::BanditAlgorithmBase )
     error( "No implementation of getArmIndex() for ", typeof(agent) );
 end

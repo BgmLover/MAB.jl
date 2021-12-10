@@ -67,10 +67,10 @@ end
 
 function add_arms!( agent::UCB1, noOfArms::Int )
     agent.noOfArms += noOfArms
-
-    agent.cummReward    = append( agent.cummReward, zeros( Float64, noOfArms ) )
-    agent.count         = append( agent.count, zeros( Int64, noOfArms ) )
-    agent.ucbIndices    = append( agent.ucbIndices, zeros( Float64, noOfArms ) )
+    
+    agent.cummReward    = append!( agent.cummReward, zeros( Float64, noOfArms ) )
+    agent.count         = append!( agent.count, zeros( Int64, noOfArms ) )
+    agent.ucbIndices    = append!( agent.ucbIndices, zeros( Float64, noOfArms ) )
 
     nothing
 end

@@ -30,7 +30,7 @@ module Algorithms
 
     export
         # Methods
-        get_arm_index, update_reward!, reset!, info_str,
+        get_arm_index, update_reward!, reset!, info_str, add_arms!,
         show,
         # Agents
         BanditAlgorithmBase,
@@ -103,7 +103,7 @@ end
         # Export algorithms
         Algorithms,
         # Methods
-        get_arm_index, update_reward!, reset!, info_str, show,
+        get_arm_index, update_reward!, reset!, info_str, show, add_arms!,
         # Agents
         BanditAlgorithmBase,
         epsGreedy, epsNGreedy,
